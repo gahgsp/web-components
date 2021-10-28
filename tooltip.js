@@ -12,6 +12,7 @@ class Tooltip extends HTMLElement {
    * The correct place for DOM initializations.
    */
   connectedCallback() {
+    this._text = this.getAttribute('text');
     const icon = document.createElement('span');
     icon.textContent = ' (?)';
     icon.addEventListener('mouseenter', this._showTooltip.bind(this));
@@ -21,7 +22,7 @@ class Tooltip extends HTMLElement {
 
   _showTooltip() {
     this._container = document.createElement('div');
-    this._container.textContent = 'This is the Tooltip Web Component text!';
+    this._container.textContent = this._text;
     this.appendChild(this._container);
   }
 
